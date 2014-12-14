@@ -27,7 +27,24 @@ case $fenceop  in
 				;;
 
 
-			2) echo "Not Ready Yet"
+			2) echo "Please enter the location of the textfile you wish to decrypt (eg. ~/encrypted.txt)"
+				#reads input
+				read string
+				stringZ=`cat $string | tr -d ' ' | tr '[:upper:]' '[:lower:]'`
+				#Encrypting via transposition of original plaintext
+				row1=${stringZ:0:1}${stringZ:4:1}${stringZ:11:1}${stringZ:17:1}
+				row2=${stringZ:12:1}${stringZ:5:1}${stringZ:1:1}
+				row3=${stringZ:6:1}${stringZ:13:1}${stringZ:18:1}
+				row4=${stringZ:14:1}${stringZ:7:1}${stringZ:2:1}
+				row5=${stringZ:8:1}${stringZ:15:1}${stringZ:19:1}
+				row6=${stringZ:16:1}${stringZ:9:1}${stringZ:3:1}
+				row7=${stringZ:10:1}${stringZ:21:1}
+
+				#Concatenating the string after permutation
+				cipher=$row1$row2$row3$row4$row5$row6$row7
+
+				echo "$cipher" >> decrypted.txt
+				echo "Decryption is completed. Please know that the decryption is not 100% accurate. The text file is saved as decrypted.txt"
 			;;
 
 esac
