@@ -21,10 +21,14 @@ case $userchoice in
 		case $keyop  in 
 
 		1) 	echo "Enter a key word"
+			#Read the keyword from user
 			read  keyword;
 					
 		  	echo "Enter the location of the text file to be encrypted (eg: ~/sample.txt) "	
-	               read dir;
+	        #Read the directory of the text file from user
+	        read dir;
+
+			#Encryption Implementation
 
 			key=`echo $keyword | tr '[:lower:]' '[:upper:]' `
 			P="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -108,7 +112,7 @@ case $userchoice in
 				#reads input
 				read string
 				stringZ=`cat $string | tr -d ' ' | tr '[:upper:]' '[:lower:]'`
-				#Encrypting via transposition of original plaintext
+				#Decrypting via re-transpositioning of ciphertext
 				row1=${stringZ:0:1}${stringZ:4:1}${stringZ:11:1}${stringZ:17:1}
 				row2=${stringZ:12:1}${stringZ:5:1}${stringZ:1:1}
 				row3=${stringZ:6:1}${stringZ:13:1}${stringZ:18:1}
